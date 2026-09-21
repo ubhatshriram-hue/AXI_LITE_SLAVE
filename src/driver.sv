@@ -43,7 +43,7 @@ class driver extends uvm_driver #(seq_item);
 				 task write_trans(seq_item req);
 					 fork
 						  begin
-							    vif.drv_cb.AWADDR<=32'h28;
+							    vif.drv_cb.AWADDR<=req.AWADDR;
 							    vif.drv_cb.AWPROT<=req.AWPROT;
 							    vif.drv_cb.AWVALID<=req.AWVALID;
 							    if(req.AWVALID)begin
@@ -76,7 +76,7 @@ class driver extends uvm_driver #(seq_item);
 				 task read_trans(seq_item req);
 					   fork
 						      begin
-							           vif.drv_cb.ARADDR<=32'h28;
+							           vif.drv_cb.ARADDR<=req.ARADDR;
 							          vif.drv_cb.ARPROT<=req.ARPROT;
 							          vif.drv_cb.ARVALID<=req.ARVALID;
 							          if(req.ARVALID)begin
